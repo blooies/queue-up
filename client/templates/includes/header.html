@@ -1,0 +1,21 @@
+<template name="header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                    <img src="images/profile.png">
+                </button>
+                <a class="navbar-brand" href="{{pathFor 'landing'}}"><img class='icon-teardrop' src="images/little_tear.png">MAN TEARS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    <img src="images/profile.png" style="margin-top: 14px;">
+                    {{> loginButtons}}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {{#if currentUser}}<li><a href="{{pathFor 'results'}}">Check Profile</a></li>{{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>
