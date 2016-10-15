@@ -1,7 +1,9 @@
-Template.batches.helpers({
+// Template.batches.helpers({
+//     batches: function() {
+//         Bat
+//     }
+// })
 
-})
+// Template.batches.events({
 
-Template.batches.events({
-    
-})
+// })
