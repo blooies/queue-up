@@ -7,5 +7,8 @@ Template.showProjects.helpers({
 Template.showProjects.events({
     'click .log-num': function() {
         Router.go('numbers', {_id: this._id});
+    },
+    'click #create-new': function() {
+        
     }
 })
