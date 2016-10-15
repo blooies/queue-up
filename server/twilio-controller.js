@@ -1,15 +1,18 @@
+var twilio = require("../node_modules/twilio/lib");
+var accountSid = 'AC55e374775b226d4fb6da4e8158d71c9f'; // Your Account SID from www.twilio.com/console
+var authToken = 'b667a3a7c7fe347a962b649ea9bbb195';   // Your Auth Token from www.twilio.com/console
+var client = new twilio.RestClient(accountSid, authToken);
+const TWILIO_NUMBER = "+15168304800";
+
 TwilioController = {
-    accountSid: 'AC822b578b38227f22193021b9ac9ba73e',
-    authToken: 'bf5ff19ff629d49e334b42131f90ea5b',
-    client: require('twilio')(this.accountSid, this.authToken),
-    sendTextMessage: function() {
-        this.client.messages.create({ 
-            to: "+15165471888", 
-            from: "+15165471888", 
-            body: "This is the ship that made the Kessel Run in fourteen parsecs?", 
-            mediaUrl: "https://c1.staticflickr.com/3/2899/14341091933_1e92e62d12_b.jpg",  
-        }, function(err, message) { 
-            console.log(message.sid); 
+    sendTextMessage: function(number) {
+        client.messages.create({
+            body: 'TEXT MESSAGE FROM APP!!!!',
+            to: number,  // Text this number
+            from: TWILIO_NUMBER, // From a valid Twilio number
+        }, function(err, message) {
+            console.log(message);
+            console.log(err)
         });
     }
 }
