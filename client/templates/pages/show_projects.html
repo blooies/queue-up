@@ -1,0 +1,12 @@
+<template name='showProjects'>
+    <div>
+        <h2>My Events</h2>
+        {{#each projects}}
+            <h3>{{name}}</h3>
+            <div class='card-tabs'>
+                <div>batch</div>
+                <div class='log-num'>log num</div>
+            </div>
+        {{/each}}
+    </div>
+</template>
