@@ -4,7 +4,6 @@ Template.numbers.helpers({
 
 Template.numbers.events({
     'click #submit-num': function() {
-        console.log("HERE2!!!!")
         var first = document.getElementById('first-name').value;
         var last = document.getElementById('last-name').value;
         var number = document.getElementById('number').value;
@@ -15,14 +14,17 @@ Template.numbers.events({
             number: number,
             projectId: projectId
         }
-        console.log(numberObj)
+
         Meteor.call('createNumber', numberObj, function(error, result) {
             if (error) {
                 console.log(error);
             } else {
-                console.log(result)
+                var number = Numbers.findOne({_id: result});
+                var message = MessageController.getMessage(number.queueNumber, number.first);
+                Meteor.call('sendTextMessage', number.number, message, function(error, result) {
+                    console.log("sent text message!", result);
+                })
             }
         })
-    },
-
+    }
 })
