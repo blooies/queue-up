@@ -4,7 +4,8 @@ if (Projects.find().count() === 0) {
         // userId: this.userId(),
         startTime: 1700,
         endTime: 2000,
-        totalPeople: 400
+        totalPeople: 400,
+        totalNumbers: 0
     });
 
     Projects.insert({
@@ -12,7 +13,8 @@ if (Projects.find().count() === 0) {
         // userId: this.userId(),
         startTime: 1500,
         endTime: 1800,
-        totalPeople: 200
+        totalPeople: 200,
+        totalNumbers: 0
     });
 }
 
