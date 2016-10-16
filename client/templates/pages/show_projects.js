@@ -15,3 +15,8 @@ Template.showProjects.events({
         
     }
 })
+
+Template.showProjects.rendered = function() {
+    console.log("SET SESSION")
+    Session.set('title', 'My Events');
+}
