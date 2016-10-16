@@ -26,3 +26,5 @@ accounts-ui
 twbs:bootstrap
 momentjs:moment
 fourseven:scss
+session
+rajit:bootstrap3-datepicker
