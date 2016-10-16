@@ -1,0 +1,69 @@
+body {
+    background: #fff;
+    color: #545454;
+    font-family: 'Montserrat', san-serif;
+}
+
+.log-btn {
+    background-color: blue;
+    color: #fff;
+    position: fixed;
+    bottom: 0px;
+    width: 80%;
+    border-radius: 0px;
+}
+
+.log-btn:hover {
+    cursor: pointer;
+};
+
+button {
+    background: #111111;
+    color: white !important;
+    padding: 1em 2em;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+button:focus, button:hover {
+    outline: 0;
+}
+
+.navbar-container {
+    background-color: #3F51B5;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding: 7px;
+}
+
+.navbar-container h4 {
+    display: inline-block;
+    padding-top: .5em;
+    font-family: 'Arial';
+}
+
+.add-events {
+    right: 15px;
+    position: absolute;
+    top: 15px;
+}
+
+.add-events:hover {
+    cursor: pointer;
+}
+
+.empty-events {
+    margin: 0 auto;
+    margin-top: 20%;
+    width: 300px;
+    text-align: center;
+    img {
+        width: 100px;
+    }
+    .copy {
+        margin-top: 3em;
+    }
+}
