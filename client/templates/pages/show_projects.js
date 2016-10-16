@@ -1,6 +1,9 @@
 Template.showProjects.helpers({
     projects: function() {
         return Projects.find({});
+    },
+    atLeastOneProject: function() {
+        return Projects.findOne({});
     }
 })
 
