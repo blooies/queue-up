@@ -1,10 +1,12 @@
 <template name="header">
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-container">
-            <h4>My Events</h4>
+            <h4 id='navbar-title'>{{title}}</h4>
             <!-- <div class='add-events glyphicon glyphicon-plus'></div> -->
             <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation"> -->
+            {{#if addEventsPage}}
                 <div class='add-events glyphicon glyphicon-plus'></div>
+            {{/if}}
             <!-- </button> -->
         </div>
         <!-- <div class="container-fluid">

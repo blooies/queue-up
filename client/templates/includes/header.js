@@ -1,5 +1,14 @@
-// Template.header.rendered = function() {
-//     $('.navbar-brand').on('mouseover', function() {
-//         $('.icon-teardrop')[0].css('scale', '1.5');
-//     })
-// }
+Template.header.helpers({
+    title: function() {
+        return Session.get('title');
+    },
+    addEventsPage: function() {
+        return Session.get('title') == 'My Events';
+    }
+})
+
+Template.header.events({
+    'click .add-events': function() {
+        Router.go('createNew');
+    }
+})
