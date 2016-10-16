@@ -1,7 +1,7 @@
 body {
     background: #fff;
     color: #545454;
-    font-family: 'Montserrat', san-serif;
+    font-family: 'Roboto', san-serif;
 }
 
 .log-btn {
@@ -42,7 +42,9 @@ button:focus, button:hover {
 .navbar-container h4 {
     display: inline-block;
     padding-top: .5em;
-    font-family: 'Arial';
+    font-family: 'Roboto';
+    font-weight: 300;
+    letter-spacing: 1px;
 }
 
 .add-events {
@@ -66,4 +68,39 @@ button:focus, button:hover {
     .copy {
         margin-top: 3em;
     }
+}
+
+.input-container {
+    color: #666666;
+    width: 100%;
+    margin: 20px 20px 0px 0px;
+    label {
+        width: 100%;
+        margin-top: 1em;
+    }
+}
+
+.input-type {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #666666;
+    box-shadow: none !important;
+    border-radius: 0px;
+}
+
+.create-new-next {
+    margin-top: 20%;
+    width: 100%;
+    color: #fff;
+    background-color: #1AC495;
+}
+
+.split div {
+    display: inline-block;
+    width: 40%;
+}
+
+.end-time {
+    position: absolute;
+    right: 15px;
 }
