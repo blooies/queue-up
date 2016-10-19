@@ -104,3 +104,12 @@ button:focus, button:hover {
     position: absolute;
     right: 15px;
 }
+
+.login-btns {
+    position: absolute;
+    right: 20px;
+    top: 4px;
+    border: 1px solid white;
+    padding: 8px 15px !important;
+    border-radius: 4px;
+}
