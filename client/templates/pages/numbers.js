@@ -28,3 +28,7 @@ Template.numbers.events({
         })
     }
 })
+
+Template.numbers.rendered = function() {
+    Session.set('title', 'Add Attendees');
+}

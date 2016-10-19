@@ -7,7 +7,14 @@ Template.createNew.helpers({
 Template.createNew.events({
     'click .create-new-next': function() {
         Session.set('firstStep', false);
-        document.getElement
+        var name = $('#event-name').val();
+        var location = $('location').val();
+        var date = $('#date-picker').val();
+        LocalBatches.insert({
+            name: name,
+            location: location,
+            date: date
+        })
     }
 })
 
