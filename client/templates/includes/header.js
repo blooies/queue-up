@@ -25,6 +25,7 @@ Template.header.events({
 
     'click .logout-btn': function() {
     	AccountsTemplates.logout();
+    	Session.set('title', '');
     	Router.go('/')
     }
 })
