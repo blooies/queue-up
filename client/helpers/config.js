@@ -1,20 +1,14 @@
-// Accounts.ui.config({
-//     passwordSignupFields : 'USERNAME_ONLY'
-// });
+var mySubmitFunc = function(error, state) {
+    if (!error) {
+        if (state === "signIn") {
+            Router.go('/');
+        }
+        if (state === "signUp") {
+            Router.go('/');
+        }
+    }
+};
 
-// Accounts.onLogin(function () {
-//     Meteor.call('userHasGoal', function (err, userHasGoal) {
-//         var currentPath = Iron.Location.get().path;
-
-//         console.log('current', currentPath);
-//         if (userHasGoal &&
-//                 (currentPath === '/cry-level' ||
-//                 currentPath === '/goal-settings' ||
-//                 currentPath === '/')) {
-
-//             Router.go('cryLevel');
-//         } else if (!userHasGoal) {
-//             Router.go('showGoals');
-//         }
-//     }); 
-// });
+AccountsTemplates.configure({
+    onSubmitHook: mySubmitFunc
+});
