@@ -4,11 +4,27 @@ Template.header.helpers({
     },
     addEventsPage: function() {
         return Session.get('title') == 'My Events';
+    },
+    noUser: function() {
+    	return !Meteor.user();
     }
 })
 
 Template.header.events({
     'click .add-events': function() {
         Router.go('createNew');
+    },
+
+    'click .glyphicon-plus': function() {
+        Router.go('createNew');
+    },
+
+    'click .login-btn': function() {
+    	Router.go('login');
+    },
+
+    'click .logout-btn': function() {
+    	AccountsTemplates.logout();
+    	Router.go('/')
     }
 })

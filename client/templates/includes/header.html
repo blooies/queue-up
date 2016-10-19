@@ -4,13 +4,22 @@
             <h4 id='navbar-title'>{{title}}</h4>
             <!-- <div class='add-events glyphicon glyphicon-plus'></div> -->
             <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation"> -->
-            {{#if addEventsPage}}
-                <div class='add-events glyphicon glyphicon-plus'></div>
+
+            {{#if noUser}}
+                <div class='login-btn'>
+                    Sign In
+                </div>
+            {{else}}
+                <div class='logout-btn'>
+                    Log Out
+                </div>
+                {{#if addEventsPage}}
+                    <div class='add-events'>
+                        Add Events
+                    </div>
+                    <div class='glyphicon glyphicon-plus'></div>
+                {{/if}}
             {{/if}}
-            <div class='login-btns'>
-                Sign In
-            </div>
-            <!-- </button> -->
         </div>
         <!-- <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navigation">
