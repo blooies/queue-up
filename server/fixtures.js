@@ -1,22 +1,43 @@
-if (Projects.find().count() === 0) {
-    Projects.insert({
-        name: 'BigBang 2015 @ Prudential Center',
-        // userId: this.userId(),
-        startTime: 1700,
-        endTime: 2000,
-        totalPeople: 400,
-        totalNumbers: 0
-    });
+// if (Projects.find().count() === 0) {
+//     Projects.insert({
+//         name: 'BigBang 2015 @ Prudential Center',
+//         // userId: this.userId(),
+//         startTime: 1700,
+//         endTime: 2000,
+//         totalPeople: 400,
+//         totalNumbers: 0
+//     });
 
-    Projects.insert({
-        name: 'Jay Park & AOMG @ PlayStation Theater',
-        // userId: this.userId(),
-        startTime: 1500,
-        endTime: 1800,
-        totalPeople: 200,
-        totalNumbers: 0
-    });
-}
+//     Projects.insert({
+//         name: 'Jay Park & AOMG @ PlayStation Theater',
+//         // userId: this.userId(),
+//         startTime: 1500,
+//         endTime: 1800,
+//         totalPeople: 200,
+//         totalNumbers: 0
+//     });
+// }
+
+// if (Events.find().count() === 0) {
+//     Events.insert({
+//         name: 'BigBang 2015 @ Prudential Center',
+//         // userId: this.userId(),
+//         startTime: 1700,
+//         endTime: 2000,
+//         totalPeople: 400,
+//         totalNumbers: 0
+//     });
+
+//     Events.insert({
+//         name: 'Jay Park & AOMG @ PlayStation Theater',
+//         // userId: this.userId(),
+//         startTime: 1500,
+//         endTime: 1800,
+//         totalPeople: 200,
+//         totalNumbers: 0
+//     });
+// }
+
 
 
 // Categories.remove({});
