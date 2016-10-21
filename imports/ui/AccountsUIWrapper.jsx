@@ -4,6 +4,11 @@ import { Template } from 'meteor/templating';
 import { Blaze } from 'meteor/blaze';
 
 export default class AccountsUIWrapper extends Component {
+  constructor(props) {
+    super(props)
+    console.log(props)
+  }
+
   componentDidMount() {
     // Use Meteor Blaze to render login buttons
     console.log("in account ", Meteor.user())
