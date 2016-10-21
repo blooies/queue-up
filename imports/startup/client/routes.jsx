@@ -5,6 +5,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import App from '../../ui/App.jsx';
 import CreateEvent from '../../ui/CreateEvent.jsx';
 import SubmitNumber from '../../ui/SubmitNumber.jsx';
+import AccountsUIWrapper from '../../ui/AccountsUIWrapper.jsx';
 // import AppContainer from '../../ui/containers/AppContainer.js';
 // import ListPageContainer from '../../ui/containers/ListPageContainer.js';
 // import AuthPageSignIn from '../../ui/pages/AuthPageSignIn.js';
@@ -18,6 +19,8 @@ export const renderRoutes = () => (
     <Route path='/createEvent' component={CreateEvent}>
     </Route>
     <Route path='/submitNumber' component={SubmitNumber}>
+    </Route>
+    <Route path='/signIn' component={AccountsUIWrapper}>
     </Route>
   </Router>
 );

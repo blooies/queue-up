@@ -1,79 +1,37 @@
-// import React, { Component, PropTypes } from 'react';
-// import ReactDOM from 'react-dom';
-// import { Meteor } from 'meteor/meteor';
-// import { createContainer } from 'meteor/react-meteor-data';
-
-// // import { Events } from '../api/tasks.js';
-
-// import Event from './Event.jsx';
-// import AccountsUIWrapper from './AccountsUIWrapper.jsx';
-
-// // App component - represents the whole app
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     // this.state = {
-//     //   hideCompleted: false,
-//     // };
-//   }
-
-//   renderEvents() {
-//     // let filteredTasks = this.props.tasks;
-//     // if (this.state.hideCompleted) {
-//     //   filteredTasks = filteredTasks.filter(task => !task.checked);
-//     // }
-//     // return filteredTasks.map((task) => {
-//     //   const currentUserId = this.props.currentUser && this.props.currentUser._id;
-//     //   const showPrivateButton = task.owner === currentUserId;
-
-//       return (
-//         <Event
-//           event={event}
-//         />
-//       );
-//     // });
-//   }
-
-//   render() {
-//     return (
-//       <div className="container">
-//           <AccountsUIWrapper />
-//         <ul>
-//           {this.renderEvents()}
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-
-// App.propTypes = {
-//     events: PropTypes.array.isRequired,
-//     currentUser: PropTypes.object,
-// };
-
-// export default createContainer(() => {
-//     Meteor.subscribe('projects');
-
-//     return {
-//         projects: Projects.find({}).fetch(),
-//         currentUser: Meteor.user(),
-//     }; 
-// }, App);
-
-
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+
 import { Events } from '../api/events.js';
 import Event from './Event.jsx';
 import Header from './Header.jsx';
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+
 
 class App extends Component {
-    componentDidMount() {
-        this.setState({
-            title: 'My Events'
-        })
+    constructor(props) {
+      super(props);
+      console.log(props)
+
+      this.state = {
+        title: ''
+      }
     }
+    // componentDidMount() {
+    //   console.log(this.props)
+    //   if (this.props.currentUser) {
+    //     console.log("HEREEE")
+    //     this.setState({
+    //       title: 'My Events'
+    //     })
+    //   } else {
+    //     console.log("HERE 2")
+    //     this.setState({
+    //       title: ''
+    //     });
+    //   }
+    // }
 
     renderEvents() {
       return this.props.events.map((event) => (
@@ -98,12 +56,15 @@ class App extends Component {
 
     render() {
       return (
-        <div className='container'>
-            {
-              this.props.showEvents ?
-                  this.renderEvents() :
-                      this.renderEmptyEvents()
-            }
+        <div>
+          <Header title={this.state.title}/>
+          <div className='container'>
+              {
+                this.props.showEvents ?
+                    this.renderEvents() :
+                        this.renderEmptyEvents()
+              }
+          </div>
         </div>
       )
     }
@@ -111,12 +72,12 @@ class App extends Component {
 
 App.propTypes = {
     events: PropTypes.array.isRequired,
-    showEvents: React.PropTypes.bool.isRequired
+    showEvents: React.PropTypes.bool.isRequired,
 }
 
 export default createContainer(() => {
     return {
         events: Events.find({}).fetch(),
-        showEvents: !!Events.findOne({})
+        showEvents: !!Events.findOne({}),
     }
 }, App);

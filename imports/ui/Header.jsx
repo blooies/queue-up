@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 
 export default class Header extends Component {
-    getTitle() {
-        return this.state.title;
+    redirectToLogin() {
+       const path = '/signIn';
+       browserHistory.push(path); 
+    }
+    showUserNavigaton() {
+        return !!Meteor.user();
     }
 
     render() {
         return (
             <nav className="navbar navbar-default" role="navigation">
                 <div className="navbar-container">
-                    <h4 id='navbar-title'>{this.getTitle}</h4>
-                    <div className='login-btn'>
+                    <h4 id='navbar-title'>{this.props.title}</h4>
+                    <div onClick={this.redirectToLogin} className='login-btn'>
                         Sign In
                     </div>
                     <div className='logout-btn'>
