@@ -52,7 +52,7 @@ export default class Home extends Component {
 
     render() {
       return (
-        <div id="main" className="col-md-8 col-xs-12">
+        <div>
           {this.renderMainPage()}
         </div>
       )

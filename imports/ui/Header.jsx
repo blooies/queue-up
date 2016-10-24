@@ -24,14 +24,10 @@ export default class Header extends Component {
       return title;
     }
 
-    // renderHeader() {
-    //   let currentUser = this.props.currentUser;
-    //   return (
-    //     <Header title={this.getTitle()}
-    //       currentUser={this.props.currentUser}
-    //     />
-    //   )
-    // }
+    addEvents() {
+        const path = '/createEvent';
+        browserHistory.push(path);
+    }
 
     render() {
         return (
@@ -41,7 +37,7 @@ export default class Header extends Component {
                     { this.props.currentUser ? (
                         <div>
                             <div className='logout-btn' onClick={this.logOut}>Log Out</div>
-                            <div className='add-events'>Add Events</div>
+                            <div className='add-events' onClick={this.addEvents}>Add Events</div>
                             <div className='glyphicon glyphicon-plus'></div>
                         </div>
                     )  : (

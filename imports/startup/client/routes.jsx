@@ -17,9 +17,9 @@ export const renderRoutes = () => (
   <Router history={browserHistory}>
     <Route path='/' component={App}>
         <IndexRoute component={Home}/>
+        <Route path='/createEvent' component={CreateEvent}/>
+        <Route path='/submitNumber' component={SubmitNumber}/>
+        <Route path='/signIn' component={AccountsUIWrapper}/>
     </Route>
-    <Route path='/createEvent' component={CreateEvent}/>
-    <Route path='/submitNumber' component={SubmitNumber}/>
-    <Route path='/signIn' component={AccountsUIWrapper}/>
   </Router>
 );

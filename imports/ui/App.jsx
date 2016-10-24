@@ -78,7 +78,9 @@ class App extends Component {
       return (
         <div>
           <Header/>
-          {this.props.children}
+          <div id="main" className="col-md-8 col-xs-12">
+            {this.props.children}
+          </div>
         </div>
       )
     }
