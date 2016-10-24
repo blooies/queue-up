@@ -6,25 +6,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Events } from '../api/events.js';
 import Event from './Event.jsx';
 import Header from './Header.jsx';
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
-
-class App extends Component {
-    constructor(props) {
-      super(props);
-    }
-
-    // getTitle() {
-    //   var title;
-    //   if (this.props.currentUser) {
-    //     title = 'My Events';
-    //   } else {
-    //     title = ''
-    //   }
-
-    //   return title;
-    // }
-
+export default class Home extends Component {
     renderEvents() {
       return this.props.events.map((event) => (
         <Event 
@@ -46,16 +29,6 @@ class App extends Component {
       )
     }
 
-    // renderHeader() {
-    //   let currentUser = this.props.currentUser;
-    //   return (
-    //     <Header title={this.getTitle()}
-    //       currentUser={currentUser}
-    //     />
-    //   )
-    // }
-
-
     renderWelcome() {
       return (
         <div className="story">
@@ -67,8 +40,11 @@ class App extends Component {
 
     renderMainPage() {
       let currentUser = this.props.currentUser;
-      if (currentUser) {
+      let eventsExist = this.props.showEvents;
+      if (currentUser && eventsExist) {
         return this.renderEvents();
+      } else if (currentUser) {
+        return this.renderEmptyEvents();
       } else {
         return this.renderWelcome();
       }
@@ -76,15 +52,14 @@ class App extends Component {
 
     render() {
       return (
-        <div>
-          <Header/>
-          {this.props.children}
+        <div id="main" className="col-md-8 col-xs-12">
+          {this.renderMainPage()}
         </div>
       )
     }
 }
 
-App.propTypes = {
+Home.propTypes = {
   events: PropTypes.array.isRequired,
   showEvents: React.PropTypes.bool.isRequired,
   currentUser: PropTypes.object,
@@ -96,4 +71,4 @@ export default createContainer(() => {
     showEvents: !!Events.findOne({}),
     currentUser: Meteor.user()
   }
-}, App);
+}, Home);

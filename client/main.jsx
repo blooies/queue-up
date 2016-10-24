@@ -7,6 +7,5 @@ import App from '../imports/ui/App.jsx';
 import Header from '../imports/ui/Header.jsx';
 
 Meteor.startup(() => {
-  render(<Header/>, document.getElementById('header'));
   render(renderRoutes(), document.getElementById('render-target'));
 });
