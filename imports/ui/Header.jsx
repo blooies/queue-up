@@ -24,6 +24,17 @@ export default class Header extends Component {
       return title;
     }
 
+    goBack() {
+        browserHistory.goBack();
+    }
+
+    backButton() {
+        console.log("Show back button??", this.props.showBackButton)
+        if (this.props.showBackButton) {
+            return <div className='back-btn' onClick={this.goBack}>Back</div>
+        }
+    }
+
     addEvents() {
         const path = '/createEvent';
         browserHistory.push(path);
@@ -33,6 +44,7 @@ export default class Header extends Component {
         return (
             <nav className="navbar navbar-default" role="navigation">
                 <div className="navbar-container">
+                    {this.backButton()}
                     <h4 id='navbar-title'>{this.getTitle()}</h4>
                     { this.props.currentUser ? (
                         <div>

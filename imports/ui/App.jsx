@@ -12,17 +12,26 @@ import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 class App extends Component {
     constructor(props) {
       super(props);
+      console.log(this.props.location)
+      this.state = {
+        location: this.props.location.pathname,
+        showBackButton: false
+      }
     }
 
-    // getTitle() {
-    //   var title;
-    //   if (this.props.currentUser) {
-    //     title = 'My Events';
-    //   } else {
-    //     title = ''
+    // componentWillReceiveProps(nextProps) {
+    //   if (this.nextProps) {
+    //     var showBackButton = this.state.location == this.nextProps.location.pathname;
+    //     console.log('set state', showBackButton)
+    //     this.setState({
+    //       showBackButton: showBackButton
+    //     })
     //   }
-
-    //   return title;
+    //   // // console.log('setting state', showBackButton)
+    //   // console.log(this.state)
+    //   // console.log(this.nextProps)
+    //   // console.log("NExT PROPS", this.state.location)
+    //   // console.log("NExT PROPS", this.nextProps.location)
     // }
 
     renderEvents() {
@@ -46,16 +55,6 @@ class App extends Component {
       )
     }
 
-    // renderHeader() {
-    //   let currentUser = this.props.currentUser;
-    //   return (
-    //     <Header title={this.getTitle()}
-    //       currentUser={currentUser}
-    //     />
-    //   )
-    // }
-
-
     renderWelcome() {
       return (
         <div className="story">
@@ -77,7 +76,7 @@ class App extends Component {
     render() {
       return (
         <div>
-          <Header/>
+          <Header showBackButton={this.state.showBackButton}/>
           <div id="main" className="col-md-8 col-xs-12">
             {this.props.children}
           </div>

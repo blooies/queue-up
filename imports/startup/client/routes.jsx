@@ -13,9 +13,12 @@ import Home from '../../ui/Home.jsx';
 // import AuthPageJoin from '../../ui/pages/AuthPageJoin.js';
 // import NotFoundPage from '../../ui/pages/NotFoundPage.js';
 
+function test() {
+    console.log("HERE", this)
+}
 export const renderRoutes = () => (
   <Router history={browserHistory}>
-    <Route path='/' component={App}>
+    <Route path='/' component={App} onChange={test}>
         <IndexRoute component={Home}/>
         <Route path='/createEvent' component={CreateEvent}/>
         <Route path='/submitNumber' component={SubmitNumber}/>
