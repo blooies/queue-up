@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 // // route components
@@ -13,16 +13,22 @@ import Home from '../../ui/Home.jsx';
 // import AuthPageJoin from '../../ui/pages/AuthPageJoin.js';
 // import NotFoundPage from '../../ui/pages/NotFoundPage.js';
 
-function test() {
-    console.log("HERE", this)
+export default class RenderRoutes extends Component {
+    setLocation() {
+        this.setState({
+            location
+        })
+    }
+    render() {
+        return (
+            <Router history={browserHistory}>
+                <Route path='/' component={App} onChange={this.setLocation} showBackButton={this.showBackButton}>
+                    <IndexRoute component={Home}/>
+                    <Route path='/createEvent' component={CreateEvent}/>
+                    <Route path='/submitNumber' component={SubmitNumber}/>
+                    <Route path='/signIn' component={AccountsUIWrapper}/>
+                </Route>
+            </Router>
+        )
+    }
 }
-export const renderRoutes = () => (
-  <Router history={browserHistory}>
-    <Route path='/' component={App} onChange={test}>
-        <IndexRoute component={Home}/>
-        <Route path='/createEvent' component={CreateEvent}/>
-        <Route path='/submitNumber' component={SubmitNumber}/>
-        <Route path='/signIn' component={AccountsUIWrapper}/>
-    </Route>
-  </Router>
-);
