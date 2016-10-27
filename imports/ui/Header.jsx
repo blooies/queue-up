@@ -50,7 +50,7 @@ export default class Header extends Component {
         return (
             <nav className="navbar navbar-default" role="navigation">
                 <div className="navbar-container">
-                    <div className='back-btn' style={{display: this.props.showBackButton ? 'none' : 'block'}} onClick={this.goBack}>
+                    <div className='back-btn' style={{display: this.props.showBackButton ? 'block' : 'none'}} onClick={this.goBack}>
                         Back
                     </div>
                     <h4 id='navbar-title'>{this.getTitle()}</h4>
