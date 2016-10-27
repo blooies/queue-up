@@ -172,4 +172,7 @@ button:hover {
 .back-btn {
     display: inline-block;
     float: left;
+    &:hover {
+        cursor: pointer;
+    }
 }
