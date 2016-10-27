@@ -12,27 +12,21 @@ import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 class App extends Component {
     constructor(props) {
       super(props);
-      console.log(this.props.location)
       this.state = {
         location: this.props.location.pathname,
         showBackButton: false
       }
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //   if (this.nextProps) {
-    //     var showBackButton = this.state.location == this.nextProps.location.pathname;
-    //     console.log('set state', showBackButton)
-    //     this.setState({
-    //       showBackButton: showBackButton
-    //     })
-    //   }
-    //   // // console.log('setting state', showBackButton)
-    //   // console.log(this.state)
-    //   // console.log(this.nextProps)
-    //   // console.log("NExT PROPS", this.state.location)
-    //   // console.log("NExT PROPS", this.nextProps.location)
-    // }
+    componentWillReceiveProps(nextProps) {
+      if (nextProps) {
+        var showBackButton = this.state.location == nextProps.location.pathname;
+        this.setState({
+          showBackButton: showBackButton,
+          location: nextProps.location.pathname
+        })
+      }
+    }
 
     renderEvents() {
       return this.props.events.map((event) => (
