@@ -13,19 +13,23 @@ class App extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        location: this.props.location.pathname,
-        showBackButton: false
+        showBackButton: false,
+        location: this.props.location.pathname
       }
     }
 
     componentWillReceiveProps(nextProps) {
-      if (nextProps) {
-        var showBackButton = this.state.location == nextProps.location.pathname;
-        this.setState({
-          showBackButton: showBackButton,
-          location: nextProps.location.pathname
-        })
+      var showBackButton;
+      if (nextProps.location.pathname == '/') {
+        showBackButton = false;
+      } else {
+        showBackButton = !(this.props.location.pathname == nextProps.location.pathname);
       }
+
+      this.setState({
+        showBackButton: showBackButton,
+        location: nextProps.location.pathname
+      })
     }
 
     renderEvents() {
