@@ -14,15 +14,10 @@ import Home from '../../ui/Home.jsx';
 // import NotFoundPage from '../../ui/pages/NotFoundPage.js';
 
 export default class RenderRoutes extends Component {
-    setLocation() {
-        this.setState({
-            location
-        })
-    }
     render() {
         return (
             <Router history={browserHistory}>
-                <Route path='/' component={App} onChange={this.setLocation} showBackButton={this.showBackButton}>
+                <Route path='/' component={App}>
                     <IndexRoute component={Home}/>
                     <Route path='/createEvent' component={CreateEvent}/>
                     <Route path='/submitNumber' component={SubmitNumber}/>
