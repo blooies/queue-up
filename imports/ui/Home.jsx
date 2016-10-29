@@ -4,49 +4,20 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import { Events } from '../api/events.js';
-import Event from './Event.jsx';
-import Header from './Header.jsx';
+import ListEvents from './ListEvents.jsx';
+import EmptyEvents from './EmptyEvents.jsx';
+import WelcomeGreeting from './WelcomeGreeting.jsx';
 
 export default class Home extends Component {
-    renderEvents() {
-      return this.props.events.map((event) => (
-        <Event 
-          key={event._id}
-          event={event}
-        />
-      ));
-    }
-
-    renderEmptyEvents() {
-      return (
-        <div className='empty-events'>
-          <img src='images/empty_state.png'/>
-            <div className='copy'>
-              <p>You have no events.</p>
-              <p>Tap the '+' icon to create events.</p>
-            </div>
-        </div>
-      )
-    }
-
-    renderWelcome() {
-      return (
-        <div className="story">
-          <h1 id="main-title">QueueUp</h1>
-          An app to help you manage your event's queues more efficiently.
-        </div>
-      )
-    }
-
     renderMainPage() {
       let currentUser = this.props.currentUser;
       let eventsExist = this.props.showEvents;
       if (currentUser && eventsExist) {
-        return this.renderEvents();
+        return <Events/>;
       } else if (currentUser) {
-        return this.renderEmptyEvents();
+        return <EmptyEvents/>
       } else {
-        return this.renderWelcome();
+        return <WelcomeGreeting/>
       }
     }
 
@@ -60,14 +31,12 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  events: PropTypes.array.isRequired,
   showEvents: React.PropTypes.bool.isRequired,
   currentUser: PropTypes.object,
 }
 
 export default createContainer(() => {
   return {
-    events: Events.find({}).fetch(),
     showEvents: !!Events.findOne({}),
     currentUser: Meteor.user()
   }

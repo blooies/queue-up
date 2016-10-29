@@ -32,45 +32,6 @@ class App extends Component {
       })
     }
 
-    renderEvents() {
-      return this.props.events.map((event) => (
-        <Event 
-          key={event._id}
-          event={event}
-        />
-      ));
-    }
-
-    renderEmptyEvents() {
-      return (
-        <div className='empty-events'>
-          <img src='images/empty_state.png'/>
-            <div className='copy'>
-              <p>You have no events.</p>
-              <p>Tap the '+' icon to create events.</p>
-            </div>
-        </div>
-      )
-    }
-
-    renderWelcome() {
-      return (
-        <div className="story">
-          <h1 id="main-title">QueueUp</h1>
-          An app to help you manage your event's queues more efficiently.
-        </div>
-      )
-    }
-
-    renderMainPage() {
-      let currentUser = this.props.currentUser;
-      if (currentUser) {
-        return this.renderEvents();
-      } else {
-        return this.renderWelcome();
-      }
-    }
-
     render() {
       return (
         <div>
