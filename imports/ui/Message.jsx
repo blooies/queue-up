@@ -1,10 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
-export default class Message extends Component {
+export default class MessageBox extends Component {
+    constructor(props) {
+        super(props);
+    }
+
 	render() {
-		<div>
-			<p>{this.props.message}</p>
-		</div>
+        return (
+    		<div>
+    			<p>{this.props.text}</p>
+    		</div>
+        )
 	}
 }
