@@ -8,8 +8,10 @@ import { Events } from '../api/events.js';
 export default class CreateEvent extends Component {
     constructor(props) {
         super(props);
-        this.state = {secondStep: false}
+        this.state = {secondStep: false};
+        this.titles = ['name', 'location', 'date'];
         this.saveFormValue = this.saveFormValue.bind(this);
+        this.goToSecondStep = this.goToSecondStep.bind(this);
     }
 
     saveFormValue(fieldName, value) {
@@ -26,9 +28,12 @@ export default class CreateEvent extends Component {
     }
 
     saveEvent(event) {
-        Meteor.call('tasks.insert', text);
-
-        ReactDOM.findDOMNode(this.refs.textInput).value = '';
+        var self = this;
+        var eventInfo = this.titles.reduce((prev, current) => {
+            prev[current] = self.state[current];
+            return prev;
+        }, {});
+        console.log(eventInfo)
     }
 
     render() {
@@ -39,7 +44,7 @@ export default class CreateEvent extends Component {
                         <InputContainer>
                             <Input
                                 placeholder='Event Name'
-                                id='event-name'
+                                id='name'
                                 label='Event Name'
                                 onChange={this.saveFormValue}
                             />
@@ -51,7 +56,7 @@ export default class CreateEvent extends Component {
                             />
                             <Input
                                 placeholder='Date'
-                                id='date-picker'
+                                id='date'
                                 label='Date'
                                 onChange={this.saveFormValue}
                             />
