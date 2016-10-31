@@ -21,7 +21,3 @@ export default class Event extends Component {
         );
     }
 }
-
-Event.propTypes = {
-    event: PropTypes.object.isRequired,
-}

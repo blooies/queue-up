@@ -7,8 +7,8 @@ export default class WelcomeGreeting extends Component {
 		return (
 			<div className="story">
 			    <h1 id="main-title">QueueUp</h1>
-			    An app to help you manage your event's queues more efficiently>
-			  </div>
+			    <Message message="An app to help you manage your event's queues more efficiently."/>
+			 </div>
 		)
 	}
 }

@@ -36,7 +36,7 @@ class App extends Component {
       return (
         <div>
           <Header showBackButton={this.state.showBackButton}/>
-          <div id="main" className="col-md-8 col-xs-12">
+          <div id="main">
             {this.props.children}
           </div>
         </div>

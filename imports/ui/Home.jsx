@@ -13,7 +13,7 @@ export default class Home extends Component {
       let currentUser = this.props.currentUser;
       let eventsExist = this.props.showEvents;
       if (currentUser && eventsExist) {
-        return <Events/>;
+        return <ListEvents/>;
       } else if (currentUser) {
         return <EmptyEvents/>
       } else {

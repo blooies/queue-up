@@ -8,8 +8,8 @@ export default class EmptyEvents extends Component {
           <div className='empty-events'>
             <img src='images/empty_state.png'/>
             <div className='copy'>
-              <p>You have no events.</p>
-              <p>Tap the '+' icon to create events.</p>
+              <Message message='You have no events'/>
+              <Message message='Tap the '+' icon to create events.'/>
             </div>
           </div>
         )
