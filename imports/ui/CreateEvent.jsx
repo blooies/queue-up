@@ -1,10 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import InputContainer from './InputContainer.jsx';
+import Input from './Input.jsx';
+
+import { Events } from '../api/events.js';
 
 export default class CreateEvent extends Component {
     constructor(props) {
         super(props);
         this.state = {secondStep: false}
+        this.saveFormValue = this.saveFormValue.bind(this);
+    }
+
+    saveFormValue(fieldName, value) {
+        var state = {};
+        state[fieldName] = value;
+        console.log('setting state in the create event', state)
+        this.setState(state);
     }
 
     goToSecondStep() {
@@ -13,60 +25,41 @@ export default class CreateEvent extends Component {
         })
     }
 
+    saveEvent(event) {
+        Meteor.call('tasks.insert', text);
+
+        ReactDOM.findDOMNode(this.refs.textInput).value = '';
+    }
+
     render() {
         return (
             <div>
                 <div style={{display: this.state.secondStep ? 'none' : 'block'}}>
                     <span>Step 1 of 2</span>
-                    <div className='input-container'>
-                        <input className="form-control input-type" type="text" placeholder='Event Name' id="event-name"/>
-                        <label className="col-form-label">Event Name</label>
-                    </div>
-
-                    <div className='input-container'>
-                        <input className="form-control input-type" type="text" placeholder='Location' id="location"/>
-                        <label className="col-form-label">Location</label>
-                    </div>
-
-                    <div className='input-container'>
-                        <input className="form-control input-type" type="text" placeholder='Date' id="date-picker"/>
-                        <label className="col-form-label">Date</label>
-                    </div>
-
-                    <button className='create-new-next' onClick={this.goToSecondStep}>Next</button>
+                        <InputContainer>
+                            <Input
+                                placeholder='Event Name'
+                                id='event-name'
+                                label='Event Name'
+                                onChange={this.saveFormValue}
+                            />
+                            <Input
+                                placeholder='Location'
+                                id='location'
+                                label='Location'
+                                onChange={this.saveFormValue}
+                            />
+                            <Input
+                                placeholder='Date'
+                                id='date-picker'
+                                label='Date'
+                                onChange={this.saveFormValue}
+                            />
+                            <button className='create-new-next' onClick={this.goToSecondStep}>
+                                Next
+                            </button>
+                        </InputContainer>
                  </div>
-
-
-                <div style={{display: this.state.secondStep ? 'block' : 'none'}}>
-                    <span>Step 2 of 2</span>
-                    <div className='split input-container'>
-                        <div>
-                            <input className="form-control input-type" type="text" placeholder='Start time' id="event-name"/>
-                            <label className="col-form-label">Start time</label>
-                        </div>
-
-                        <div className='end-time'>
-                            <input className="form-control input-type" type="text" placeholder='End time' id="event-name"/>
-                            <label className="col-form-label">End time</label>
-                        </div>
-                    </div>
-
-                    <div className='input-container'>
-                        <input className="form-control input-type" type="text" placeholder='Total number of attendees' id="event-name"/>
-                        <label className="col-form-label">Total number of attendees</label>
-                    </div>
-
-                    <div className='input-container'>
-                        <input className="form-control input-type" type="text" placeholder='Attendees per batch' id="date"/>
-                        <label className="col-form-label">Attendees per batch</label>
-                    </div>
-
-                    <div className='input-container'>
-                        <input className="form-control input-type" type="text" placeholder='Minutes per batch' id="date"/>
-                        <label className="col-form-label">Minutes per batch</label>
-                    </div>
-                    <button className='create-new-next'>Next</button>
-                </div>
             </div>
         )
     }
