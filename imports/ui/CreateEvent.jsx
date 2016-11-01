@@ -10,8 +10,10 @@ export default class CreateEvent extends Component {
         super(props);
         this.state = {secondStep: false};
         this.fieldNames = ['name', 'location', 'date'];
+        this.fieldNamesOnSecondPage = ['startTime', 'endTime', 'attendees', 'attendeesPerBatch', 'minutesPerBatch'];
         this.saveFormValue = this.saveFormValue.bind(this);
         this.goToSecondStep = this.goToSecondStep.bind(this);
+        this.saveEvent = this.saveEvent.bind(this);
     }
 
     saveFormValue(fieldName, value) {
@@ -20,14 +22,20 @@ export default class CreateEvent extends Component {
         this.setState(state);
     }
 
-    goToSecondStep() {
+    isCompleted(fields) {
         var completed = true;
-        for (var i=0; i<this.fieldNames.length; i++) {
-            var fieldName = this.fieldNames[i];
+        for (var i=0; i<fields.length; i++) {
+            var fieldName = fields[i];
             if (!this.state[fieldName]) {
                 completed = false;
             }
         }
+
+        return completed;
+    }
+
+    goToSecondStep() {
+        var completed = this.isCompleted(this.fieldNames);
 
         if (completed) {
             this.setState({
@@ -36,12 +44,19 @@ export default class CreateEvent extends Component {
         }
     }
 
-    saveEvent(event) {
-        var self = this;
-        var eventInfo = this.titles.reduce((prev, current) => {
-            prev[current] = self.state[current];
-            return prev;
-        }, {});
+    saveEvent() {
+        var completed = this.isCompleted(this.fieldNamesOnSecondPage);
+
+        if (completed) {
+            var self = this;
+            var titles = this.fieldNames.push(...this.fieldNamesOnSecondPage);
+            var eventInfo = this.fieldNames.reduce((prev, current) => {
+                prev[current] = this.state[current];
+                return prev;
+            }, {});
+            
+            Meteor.call('events.insert', eventInfo)
+        }
     }
 
     render() {
@@ -113,7 +128,7 @@ export default class CreateEvent extends Component {
                                 onChange={this.saveFormValue}
                             />
                    
-                            <button className='create-new-next'>Next</button>
+                            <button className='create-new-next' onClick={this.saveEvent}>Next</button>
                         </InputContainer>
                 </div>
             </div>
