@@ -4,16 +4,18 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 export default class InputContainer extends Component {
     constructor(props) {
-      super(props)
+      super(props);
+      this.getClassName = this.getClassName.bind(this);
     }
 
     getClassName() {
-        return 'input-container {this.props.className}';
+        var className = this.props.className ? this.props.className : '';
+        return 'input-container ' + className;
     }
 
     render() {
       return (
-            <div className={this.getClassName}>
+            <div className={this.getClassName()}>
                 {this.props.children}
             </div>
       )
