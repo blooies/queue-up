@@ -14,6 +14,6 @@ Meteor.methods({
     eventInfo.address = Meteor.users.findOne(this.userId).emails[0].address;
 
     console.log("SAVING EVENTS", eventInfo);
-    // Events.insert(eventInfo);
+    Events.insert(eventInfo);
   }
 });
