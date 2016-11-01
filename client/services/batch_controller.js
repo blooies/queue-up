@@ -35,7 +35,7 @@ BatchController = {
             startNumberQueue = endNumberQueue;
             attendees = attendees - attendeesPerBatch;
         }
-
+        console.log(batches)
         return batches;
     },
 
