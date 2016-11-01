@@ -9,7 +9,7 @@ export default class CreateEvent extends Component {
     constructor(props) {
         super(props);
         this.state = {secondStep: false};
-        this.titles = ['name', 'location', 'date'];
+        this.fieldNames = ['name', 'location', 'date'];
         this.saveFormValue = this.saveFormValue.bind(this);
         this.goToSecondStep = this.goToSecondStep.bind(this);
     }
@@ -17,14 +17,23 @@ export default class CreateEvent extends Component {
     saveFormValue(fieldName, value) {
         var state = {};
         state[fieldName] = value;
-        console.log('setting state in the create event', state)
         this.setState(state);
     }
 
     goToSecondStep() {
-        this.setState({
-            secondStep: true
-        })
+        var completed = true;
+        for (var i=0; i<this.fieldNames.length; i++) {
+            var fieldName = this.fieldNames[i];
+            if (!this.state[fieldName]) {
+                completed = false;
+            }
+        }
+
+        if (completed) {
+            this.setState({
+                secondStep: true
+            })
+        }
     }
 
     saveEvent(event) {
@@ -33,7 +42,6 @@ export default class CreateEvent extends Component {
             prev[current] = self.state[current];
             return prev;
         }, {});
-        console.log(eventInfo)
     }
 
     render() {
@@ -65,6 +73,49 @@ export default class CreateEvent extends Component {
                             </button>
                         </InputContainer>
                  </div>
+
+                 <div style={{display: this.state.secondStep ? 'block' : 'none'}}>
+                    <span>Step 2 of 2</span>
+                        <InputContainer className='split'>
+                            <Input
+                                placeholder='Start time'
+                                id='startTime'
+                                label='Start time'
+                                onChange={this.saveFormValue}
+                            />
+                            <Input
+                                placeholder='End time'
+                                id='endTime'
+                                label='End time'
+                                onChange={this.saveFormValue}
+                            />
+                        </InputContainer>
+
+                        <InputContainer>
+                            <Input
+                                placeholder='Total number of attendees'
+                                id='attendees'
+                                label='Total number of attendees'
+                                onChange={this.saveFormValue}
+                            />
+
+                            <Input
+                                placeholder='Attendees per batch'
+                                id='attendeesPerBatch'
+                                label='Attendees per batch'
+                                onChange={this.saveFormValue}
+                            />
+
+                            <Input
+                                placeholder='Minutes per batch'
+                                id='minutesPerBatch'
+                                label='Minutes per batch'
+                                onChange={this.saveFormValue}
+                            />
+                   
+                            <button className='create-new-next'>Next</button>
+                        </InputContainer>
+                </div>
             </div>
         )
     }
