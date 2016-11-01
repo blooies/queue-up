@@ -14,6 +14,7 @@ export default class CreateEvent extends Component {
         this.saveFormValue = this.saveFormValue.bind(this);
         this.goToSecondStep = this.goToSecondStep.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
+        this.getTimeOptions = this.getTimeOptions.bind(this);
     }
 
     saveFormValue(fieldName, value) {
@@ -55,8 +56,24 @@ export default class CreateEvent extends Component {
                 return prev;
             }, {});
             
-            Meteor.call('events.insert', eventInfo)
+            Meteor.call('events.insert', eventInfo);
+            var path = '/';
+            browserHistory.push(path); 
+            // BatchController.getBatches(eventInfo);
         }
+    }
+
+    getTimeOptions() {
+        var times = [];
+        var options = {};
+        for (var i=0; i<25; i++) {
+            var time = String(i) + ':00';
+            times.push(time);
+        }
+        for (var j=0; j<times.length; j++) {
+            options[times[j]] = times[j];
+        }
+        return options;
     }
 
     render() {
@@ -92,12 +109,8 @@ export default class CreateEvent extends Component {
                  <div style={{display: this.state.secondStep ? 'block' : 'none'}}>
                     <span>Step 2 of 2</span>
                         <InputContainer className='split'>
-                            <Input
-                                placeholder='Start time'
-                                id='startTime'
-                                label='Start time'
-                                onChange={this.saveFormValue}
-                            />
+                            <Select
+                                options={this.getTimeOptions}
                             <Input
                                 placeholder='End time'
                                 id='endTime'
@@ -128,7 +141,7 @@ export default class CreateEvent extends Component {
                                 onChange={this.saveFormValue}
                             />
                    
-                            <button className='create-new-next' onClick={this.saveEvent}>Next</button>
+                            <button className='create-new-next' onClick={this.saveEvent}>Finish</button>
                         </InputContainer>
                 </div>
             </div>
