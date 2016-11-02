@@ -62,6 +62,8 @@ export default class CreateEvent extends Component {
             Meteor.call('events.insert', eventInfo);
             var path = '/';
             browserHistory.push(path); 
+
+            console.log(eventInfo)
             // BatchController.getBatches(eventInfo);
         }
     }
@@ -69,20 +71,18 @@ export default class CreateEvent extends Component {
     getTimes(maxTime) {
         var times = [];
         for (var i=0; i<maxTime; i++) {
-            var individualTime;
+            var time = {};
+            var value = String(i);
+            var individualTime = String(i);
             if (i < 10) {
                 individualTime = String(0) + String(i);
-            } else {
-                individualTime = String(i);
             }
-            times.push(individualTime);
+
+            time['name'] = individualTime;
+            time['value'] = value;
+            times.push(time);
         }
-        times = times.map((time) => {
-            var obj = {};
-            obj['name'] = time;
-            obj['value'] = time;
-            return obj;
-        })
+
         return times;
     }
 
@@ -126,30 +126,26 @@ export default class CreateEvent extends Component {
 
                  <div style={{display: this.state.secondStep ? 'block' : 'none'}}>
                     <span>Step 2 of 2</span>
-                        <InputContainer className='split'>
+                        <InputContainer className='split inline'>
                             <Select
-                                className='inline'
                                 id='startHour'
                                 options={this.getHourOptions()}
                                 onChange={this.saveFormValue}
                             />
                             <Select
-                                className='inline'
                                 id='startMinute'
                                 options={this.getMinuteOptions()}
                                 onChange={this.saveFormValue}
                             />
                         </InputContainer>
 
-                        <InputContainer className='split'>
+                        <InputContainer className='split inline'>
                             <Select
-                                className='inline'
                                 id='endHour'
                                 options={this.getHourOptions()}
                                 onChange={this.saveFormValue}
                             />
                             <Select
-                                className='inline'
                                 id='endMinute'
                                 options={this.getMinuteOptions()}
                                 onChange={this.saveFormValue}
