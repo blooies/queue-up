@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import InputContainer from './InputContainer.jsx';
 import Input from './Input.jsx';
+import Select from './Select.jsx';
 
 import { Events } from '../api/events.js';
 
@@ -14,7 +15,9 @@ export default class CreateEvent extends Component {
         this.saveFormValue = this.saveFormValue.bind(this);
         this.goToSecondStep = this.goToSecondStep.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
-        this.getTimeOptions = this.getTimeOptions.bind(this);
+        this.getTimes = this.getTimes.bind(this);
+        this.getHourOptions = this.getHourOptions.bind(this);
+        this.getMinuteOptions = this.getMinuteOptions.bind(this);
     }
 
     saveFormValue(fieldName, value) {
@@ -63,17 +66,32 @@ export default class CreateEvent extends Component {
         }
     }
 
-    getTimeOptions() {
+    getTimes(maxTime) {
         var times = [];
-        var options = {};
-        for (var i=0; i<25; i++) {
-            var time = String(i) + ':00';
-            times.push(time);
+        for (var i=0; i<maxTime; i++) {
+            var individualTime;
+            if (i < 10) {
+                individualTime = String(0) + String(i);
+            } else {
+                individualTime = String(i);
+            }
+            times.push(individualTime);
         }
-        for (var j=0; j<times.length; j++) {
-            options[times[j]] = times[j];
-        }
-        return options;
+        times = times.map((time) => {
+            var obj = {};
+            obj['name'] = time;
+            obj['value'] = time;
+            return obj;
+        })
+        return times;
+    }
+
+    getHourOptions() {
+        return this.getTimes(24);
+    }
+
+    getMinuteOptions() {
+        return this.getTimes(60);
     }
 
     render() {
@@ -110,11 +128,30 @@ export default class CreateEvent extends Component {
                     <span>Step 2 of 2</span>
                         <InputContainer className='split'>
                             <Select
-                                options={this.getTimeOptions}
-                            <Input
-                                placeholder='End time'
-                                id='endTime'
-                                label='End time'
+                                className='inline'
+                                id='startHour'
+                                options={this.getHourOptions()}
+                                onChange={this.saveFormValue}
+                            />
+                            <Select
+                                className='inline'
+                                id='startMinute'
+                                options={this.getMinuteOptions()}
+                                onChange={this.saveFormValue}
+                            />
+                        </InputContainer>
+
+                        <InputContainer className='split'>
+                            <Select
+                                className='inline'
+                                id='endHour'
+                                options={this.getHourOptions()}
+                                onChange={this.saveFormValue}
+                            />
+                            <Select
+                                className='inline'
+                                id='endMinute'
+                                options={this.getMinuteOptions()}
                                 onChange={this.saveFormValue}
                             />
                         </InputContainer>
