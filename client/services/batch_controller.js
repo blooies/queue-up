@@ -1,10 +1,10 @@
 BatchController = {
     getBatches: function(params) {
         var startTime;
-        var startTimeOriginal = moment().hour(params.startTime.hour).minute(params.startTime.minute);
+        var startTimeOriginal = moment().hour(params.startHour).minute(params.startMinute);
         var batchEndTime;
         var batchEndTimeOriginal;
-        var endTime = moment().hour(params.endTime.hour).minute(params.endTime.minute);
+        var endTime = moment().hour(params.endHour).minute(params.endMinute);
         var attendees = params.totalAttendees;
         var totalAttendees = params.totalAttendees;
         var attendeesPerBatch = params.attendeesPerBatch;
