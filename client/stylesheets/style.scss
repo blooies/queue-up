@@ -97,10 +97,13 @@ button:hover {
     margin-top: 10%;
 }
 
-.split div {
-    display: inline-block;
+.split {
     width: 40%;
     margin-right: 10%;
+}
+
+.inline div {
+    display: inline-block;
 }
 
 .end-time {
