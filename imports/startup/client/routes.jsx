@@ -7,6 +7,7 @@ import CreateEvent from '../../ui/CreateEvent.jsx';
 import SubmitNumber from '../../ui/SubmitNumber.jsx';
 import AccountsUIWrapper from '../../ui/AccountsUIWrapper.jsx';
 import Home from '../../ui/Home.jsx';
+import CreateEventsAndBatches from '../../ui/CreateEventsAndBatches.jsx';
 // import AppContainer from '../../ui/containers/AppContainer.js';
 // import ListPageContainer from '../../ui/containers/ListPageContainer.js';
 // import AuthPageSignIn from '../../ui/pages/AuthPageSignIn.js';
@@ -19,10 +20,10 @@ export default class RenderRoutes extends Component {
             <Router history={browserHistory}>
                 <Route path='/' component={App}>
                     <IndexRoute component={Home}/>
-                    <Route path='/createEvent' component={CreateEvent}/>
+                    <Route path='/createEvent' component={CreateEventsAndBatches}/>
+                    <Route path='/batches' component={CreateEventsAndBatches}/>
                     <Route path='/submitNumber' component={SubmitNumber}/>
                     <Route path='/signIn' component={AccountsUIWrapper}/>
-                    <Route path='/batches' component={Batches}/>
                 </Route>
             </Router>
         )
