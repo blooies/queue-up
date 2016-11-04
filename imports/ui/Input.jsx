@@ -15,7 +15,7 @@ export default class Input extends Component {
       this.setState({
         value: event.target.value
       })
-      this.props.onChange(name, value);
+      this.props.onChange(event);
     }
 
     render() {
