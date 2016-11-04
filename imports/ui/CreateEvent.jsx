@@ -4,6 +4,7 @@ import InputContainer from './InputContainer.jsx';
 import Input from './Input.jsx';
 import Select from './Select.jsx';
 
+import { browserHistory } from 'react-router';
 import { Events } from '../api/events.js';
 
 export default class CreateEvent extends Component {
@@ -16,7 +17,7 @@ export default class CreateEvent extends Component {
             endHour: '0',
             endMinute: '0'
         };
-        
+
         this.fieldNames = ['name', 'location', 'date'];
         this.fieldNamesOnSecondPage = ['startHour', 'startMinute', 'endHour', 'endMinute', 'attendees', 'attendeesPerBatch', 'minutesPerBatch'];
         this.saveFormValue = this.saveFormValue.bind(this);
@@ -70,7 +71,7 @@ export default class CreateEvent extends Component {
             }, {});
             
             Meteor.call('events.insert', eventInfo);
-            var path = '/';
+            var path = '/batches';
             browserHistory.push(path); 
 
             console.log(eventInfo)
