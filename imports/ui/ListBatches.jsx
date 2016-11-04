@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { browserHistory } from 'react-router';
 
-import { Batch } from './Batch.jsx'
+import Batch from './Batch.jsx'
 
 export default class ListBatches extends Component {
     constructor(props) {
