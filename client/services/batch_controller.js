@@ -13,6 +13,7 @@ BatchController = {
         var startNumberQueue = 0;
         var endNumberQueue;
         var batches = [];
+        var counter = 0;
 
         while (attendees > 0) {
             startTime = startTimeOriginal.clone();
@@ -22,6 +23,7 @@ BatchController = {
             endNumberQueue = (endNumberQueue > totalAttendees) ? totalAttendees : endNumberQueue;
 
             var batch = {
+                name: 'Batch ' + counter,
                 startTimeOriginal: start,
                 endTimeOriginal: endTime,
                 startTime: startTime,
@@ -37,6 +39,7 @@ BatchController = {
             startTime = batchEndTimeOriginal;
             startNumberQueue = endNumberQueue;
             attendees = attendees - attendeesPerBatch;
+            counter += 1;
         }
         console.log(batches)
         return batches;
