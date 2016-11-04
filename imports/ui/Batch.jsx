@@ -20,6 +20,7 @@ export default class Batch extends Component {
                 <div className='batchDetails'>
                     <span>{this.formatTime(this.props.batch.startTime)} - {this.formatTime(this.props.batch.endTime)}</span>
                     <span>{this.props.batch.totalAttendees} attendees</span>
+                </div>
             </div>
         )
     }
