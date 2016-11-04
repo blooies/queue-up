@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import { browserHistory } from 'react-router';
 
+import { Batch } from './Batch.jsx'
+
 export default class ListBatches extends Component {
     constructor(props) {
         super(props);
@@ -38,29 +40,34 @@ export default class ListBatches extends Component {
         var message = '';
         var lastBatch = this.props.batches[this.props.batches.length - 1];
         if (lastBatch.overtime) {
-            message += 'You are' + {this.getTimeOverOrToSpare(lastBatch)} + 'over time.';
+            message += 'You are' + this.getTimeOverOrToSpare(lastBatch) + 'over time.';
         } else {
-            message += 'Perfect! You have' + {this.getTimeOverOrToSpare(lastBatch)} + ' to spare.';
+            message += 'Perfect! You have' + this.getTimeOverOrToSpare(lastBatch) + ' to spare.';
         }
-        message +=  'End time will be' + {lastBatch.endTime};
+        message +=  'End time will be' + lastBatch.endTime;
 
         return message;
     }
 
     renderBatches() {
-        return this.props.batches.map((batch) => (
-             <Batch
-                key={batch}
-                batch={batch}
-            />
-        ))
+        console.log("RENDER BATCHES", this.props, this)
+        if (this.props.batches) {
+            return this.props.batches.map((batch) => (
+                 <Batch
+                    key={batch.name}
+                    batch={batch}
+                />
+            ))
+        }
     }
 
     render() {
-        <div>
-            {this.renderBatches}
-            <button>Edit</button>
-            <button>Confirm</button>
-        </div>
+        return (
+            <div>
+                {this.renderBatches()}
+                <button>Edit</button>
+                <button>Confirm</button>
+            </div>
+        )
     }
 }
