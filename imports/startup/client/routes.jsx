@@ -22,6 +22,7 @@ export default class RenderRoutes extends Component {
                     <Route path='/createEvent' component={CreateEvent}/>
                     <Route path='/submitNumber' component={SubmitNumber}/>
                     <Route path='/signIn' component={AccountsUIWrapper}/>
+                    <Route path='/batches' component={Batches}/>
                 </Route>
             </Router>
         )
