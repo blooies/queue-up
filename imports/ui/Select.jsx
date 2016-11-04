@@ -23,6 +23,7 @@ export default class Select extends Component {
                 <select onChange={this.props.onChange} className={this.props.className}>
                     {this.renderOptions()}
                 </select>
+                <label className="col-form-label">{this.props.label}</label>
             </div>
         )
     }

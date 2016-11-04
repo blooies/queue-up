@@ -100,10 +100,15 @@ button:hover {
 .split {
     width: 40%;
     margin-right: 10%;
+    display: inline-block;
+    label {
+        margin-top: 0px;
+    }
 }
 
-.inline div {
+.split div {
     display: inline-block;
+    margin-right: 10%;
 }
 
 .end-time {

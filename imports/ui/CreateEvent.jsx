@@ -126,31 +126,35 @@ export default class CreateEvent extends Component {
 
                  <div style={{display: this.state.secondStep ? 'block' : 'none'}}>
                     <span>Step 2 of 2</span>
-                        <InputContainer className='split inline'>
+                        <InputContainer>
+                            <div className='split'>
+                                <Select
+                                    id='startHour'
+                                    options={this.getHourOptions()}
+                                    onChange={this.saveFormValue}
+                                />
+                                <Select
+                                    id='startMinute'
+                                    options={this.getMinuteOptions()}
+                                    onChange={this.saveFormValue}
+                                />
+                                <label className="col-form-label">Start time</label>
+                            </div>
+                            <div className='split'>
                             <Select
-                                id='startHour'
-                                options={this.getHourOptions()}
-                                onChange={this.saveFormValue}
-                            />
-                            <Select
-                                id='startMinute'
-                                options={this.getMinuteOptions()}
-                                onChange={this.saveFormValue}
-                            />
+                                    id='endHour'
+                                    options={this.getHourOptions()}
+                                    onChange={this.saveFormValue}
+                                />
+                                <Select
+                                    id='endMinute'
+                                    options={this.getMinuteOptions()}
+                                    onChange={this.saveFormValue}
+                                />
+                                <label className="col-form-label">End time</label>
+                            </div>
                         </InputContainer>
 
-                        <InputContainer className='split inline'>
-                            <Select
-                                id='endHour'
-                                options={this.getHourOptions()}
-                                onChange={this.saveFormValue}
-                            />
-                            <Select
-                                id='endMinute'
-                                options={this.getMinuteOptions()}
-                                onChange={this.saveFormValue}
-                            />
-                        </InputContainer>
 
                         <InputContainer>
                             <Input
