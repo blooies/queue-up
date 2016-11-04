@@ -19,7 +19,7 @@ export default class CreateEvent extends Component {
         };
 
         this.fieldNames = ['name', 'location', 'date'];
-        this.fieldNamesOnSecondPage = ['startHour', 'startMinute', 'endHour', 'endMinute', 'attendees', 'attendeesPerBatch', 'minutesPerBatch'];
+        this.fieldNamesOnSecondPage = ['startHour', 'startMinute', 'endHour', 'endMinute', 'totalAttendees', 'attendeesPerBatch', 'minutesPerBatch'];
         this.saveFormValue = this.saveFormValue.bind(this);
         this.goToSecondStep = this.goToSecondStep.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
@@ -73,7 +73,7 @@ export default class CreateEvent extends Component {
             Meteor.call('events.insert', eventInfo);
             var path = '/batches';
             browserHistory.push(path); 
-
+            window.test = eventInfo;
             console.log(eventInfo)
             // BatchController.getBatches(eventInfo);
         }
@@ -174,7 +174,7 @@ export default class CreateEvent extends Component {
                         <InputContainer>
                             <Input
                                 placeholder='Total number of attendees'
-                                id='attendees'
+                                id='totalAttendees'
                                 label='Total number of attendees'
                                 onChange={this.saveFormValue}
                             />
