@@ -2,13 +2,14 @@ BatchController = {
     getBatches: function(params) {
         var startTime;
         var startTimeOriginal = moment().hour(params.startHour).minute(params.startMinute);
+        var start = startTimeOriginal.clone();
         var batchEndTime;
         var batchEndTimeOriginal;
         var endTime = moment().hour(params.endHour).minute(params.endMinute);
-        var attendees = params.totalAttendees;
-        var totalAttendees = params.totalAttendees;
-        var attendeesPerBatch = params.attendeesPerBatch;
-        var minutesPerBatch = params.minutesPerBatch;
+        var attendees = parseInt(params.totalAttendees);
+        var totalAttendees = parseInt(params.totalAttendees);
+        var attendeesPerBatch = parseInt(params.attendeesPerBatch);
+        var minutesPerBatch = parseInt(params.minutesPerBatch);
         var startNumberQueue = 0;
         var endNumberQueue;
         var batches = [];
@@ -21,6 +22,8 @@ BatchController = {
             endNumberQueue = (endNumberQueue > totalAttendees) ? totalAttendees : endNumberQueue;
 
             var batch = {
+                startTimeOriginal: start,
+                endTimeOriginal: endTime,
                 startTime: startTime,
                 endTime: batchEndTime,
                 attendees: endNumberQueue - startNumberQueue,
