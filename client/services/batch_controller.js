@@ -28,7 +28,7 @@ BatchController = {
                 endTimeOriginal: endTime,
                 startTime: startTime,
                 endTime: batchEndTime,
-                attendees: endNumberQueue - startNumberQueue,
+                totalAttendees: endNumberQueue - startNumberQueue,
                 minutesPerBatch: minutesPerBatch,
                 overtime: batchEndTime > endTime,
                 startNumberQueue: startNumberQueue + 1,
