@@ -9,9 +9,16 @@ import { Events } from '../api/events.js';
 export default class CreateEvent extends Component {
     constructor(props) {
         super(props);
-        this.state = {secondStep: false};
+        this.state = {
+            secondStep: false,
+            startHour: '0',
+            startMinute: '0',
+            endHour: '0',
+            endMinute: '0'
+        };
+        
         this.fieldNames = ['name', 'location', 'date'];
-        this.fieldNamesOnSecondPage = ['startTime', 'endTime', 'attendees', 'attendeesPerBatch', 'minutesPerBatch'];
+        this.fieldNamesOnSecondPage = ['startHour', 'startMinute', 'endHour', 'endMinute', 'attendees', 'attendeesPerBatch', 'minutesPerBatch'];
         this.saveFormValue = this.saveFormValue.bind(this);
         this.goToSecondStep = this.goToSecondStep.bind(this);
         this.saveEvent = this.saveEvent.bind(this);
@@ -20,7 +27,10 @@ export default class CreateEvent extends Component {
         this.getMinuteOptions = this.getMinuteOptions.bind(this);
     }
 
-    saveFormValue(fieldName, value) {
+    saveFormValue(event) {
+        console.log("SAVE FORM VAL", event)
+        const fieldName = event.target.id;
+        const value = event.target.value;
         var state = {};
         state[fieldName] = value;
         this.setState(state);
@@ -50,7 +60,7 @@ export default class CreateEvent extends Component {
 
     saveEvent() {
         var completed = this.isCompleted(this.fieldNamesOnSecondPage);
-
+        console.log("inside save event", completed)
         if (completed) {
             var self = this;
             var titles = this.fieldNames.push(...this.fieldNamesOnSecondPage);
@@ -132,11 +142,13 @@ export default class CreateEvent extends Component {
                                     id='startHour'
                                     options={this.getHourOptions()}
                                     onChange={this.saveFormValue}
+                                    value='0'
                                 />
                                 <Select
                                     id='startMinute'
                                     options={this.getMinuteOptions()}
                                     onChange={this.saveFormValue}
+                                    value='0'
                                 />
                                 <label className="col-form-label">Start time</label>
                             </div>
@@ -145,11 +157,13 @@ export default class CreateEvent extends Component {
                                     id='endHour'
                                     options={this.getHourOptions()}
                                     onChange={this.saveFormValue}
+                                    value='0'
                                 />
                                 <Select
                                     id='endMinute'
                                     options={this.getMinuteOptions()}
                                     onChange={this.saveFormValue}
+                                    value='0'
                                 />
                                 <label className="col-form-label">End time</label>
                             </div>
