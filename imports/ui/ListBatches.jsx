@@ -9,7 +9,7 @@ export default class ListBatches extends Component {
     constructor(props) {
         super(props);
 
-        this.getMessage = this.getMessage.bind(this);
+        this.getAlert = this.getAlert.bind(this);
         this.renderBatches = this.renderBatches.bind(this);
     }
 
@@ -36,17 +36,21 @@ export default class ListBatches extends Component {
         return time;
     }
 
-    getMessage() {
-        var message = '';
-        var lastBatch = this.props.batches[this.props.batches.length - 1];
-        if (lastBatch.overtime) {
-            message += 'You are' + this.getTimeOverOrToSpare(lastBatch) + 'over time.';
-        } else {
-            message += 'Perfect! You have' + this.getTimeOverOrToSpare(lastBatch) + ' to spare.';
-        }
-        message +=  'End time will be' + lastBatch.endTime;
+    getAlert() {
+        console.log("GET MESSAGE")
+        if (this.props.batches) {
+            var message = '';
+            var lastBatch = this.props.batches[this.props.batches.length - 1];
+            var endTime = lastBatch.endTime;
+            if (lastBatch.overtime) {
+                message += 'You are ' + this.getTimeOverOrToSpare(lastBatch) + ' over time. ';
+            } else {
+                message += 'Perfect! You have ' + this.getTimeOverOrToSpare(lastBatch) + ' to spare. ';
+            }
+            message +=  'End time will be ' + endTime.format("h:mm a") + '.';
 
-        return message;
+            return message;
+        }
     }
 
     renderBatches() {
@@ -64,6 +68,7 @@ export default class ListBatches extends Component {
     render() {
         return (
             <div>
+                <div className='alert'>{this.getAlert()}</div>
                 {this.renderBatches()}
                 <button>Edit</button>
                 <button>Confirm</button>
