@@ -12,10 +12,10 @@ export default class CreateEvent extends Component {
         super(props);
         this.state = {
             secondStep: false,
-            startHour: '0',
-            startMinute: '0',
-            endHour: '0',
-            endMinute: '0'
+            startHour: 0,
+            startMinute: 0,
+            endHour: 0,
+            endMinute: 0
         };
 
         this.fieldNames = ['name', 'location', 'date'];
@@ -86,7 +86,7 @@ export default class CreateEvent extends Component {
         var times = [];
         for (var i=0; i<maxTime; i++) {
             var time = {};
-            var value = String(i);
+            var value = i;
             var individualTime = String(i);
             if (i < 10) {
                 individualTime = String(0) + String(i);
