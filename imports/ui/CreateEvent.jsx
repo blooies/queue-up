@@ -41,7 +41,7 @@ export default class CreateEvent extends Component {
         var completed = true;
         for (var i=0; i<fields.length; i++) {
             var fieldName = fields[i];
-            if (!this.state[fieldName]) {
+            if (!this.state[fieldName] && this.state[fieldName] !== 0) {
                 completed = false;
             }
         }
