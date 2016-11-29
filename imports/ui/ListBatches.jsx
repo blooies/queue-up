@@ -96,7 +96,7 @@ export default class ListBatches extends Component {
                 {this.renderBatches()}
                 <div className='batch-btns'>
                     <button onClick={this.props.goBackToEdit}>Edit</button>
-                    <button>Confirm</button>
+                    <button onClick={this.props.goBackToEvents}>Confirm</button>
                 </div>
             </div>
         )
