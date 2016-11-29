@@ -14,7 +14,7 @@ export default class Batch extends Component {
     }
 
     getOvertimeClassName() {
-        var className = 'batchDetails';
+        var className = 'batch-details';
         if (this.props.batch.overtime) {
             className += ' overtime';
         }
@@ -23,8 +23,8 @@ export default class Batch extends Component {
 
     render() {
         return (
-            <div>
-                <div className='batchNumber'>{this.props.batch.name}</div>
+            <div className='batch-container'>
+                <div className='batch-number'>{this.props.batch.name}</div>
                 <div className={this.getOvertimeClassName()}>
                     <span>{this.formatTime(this.props.batch.startTime)} - {this.formatTime(this.props.batch.endTime)}</span>
                     <span>{this.props.batch.totalAttendees} attendees</span>

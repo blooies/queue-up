@@ -24,6 +24,8 @@ export default class ListBatches extends Component {
             earlierTime = plannedEndTime;
         }
 
+        window.test = earlierTime;
+        window.test2 = laterTime;
         var hours = moment.duration(laterTime.diff(earlierTime)).hours();
         var minutes = moment.duration(laterTime.diff(earlierTime)).minutes();
         var time;
@@ -70,8 +72,10 @@ export default class ListBatches extends Component {
             <div>
                 <div className='alert'>{this.getAlert()}</div>
                 {this.renderBatches()}
-                <button>Edit</button>
-                <button>Confirm</button>
+                <div className='batch-btns'>
+                    <button>Edit</button>
+                    <button>Confirm</button>
+                </div>
             </div>
         )
     }
