@@ -196,3 +196,33 @@ button:hover {
     height: 20px;
     border: 1px solid red;
 }
+
+.alert {
+    width: 55%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.batch-container {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.batch-number, .batch-details {
+    position: absolute;
+}
+
+.batch-details {
+    right: 0px;
+    span {
+        display: block;
+    }
+}
+
+.batch-btns button {
+    color: #fff;
+    background-color: #1AC495;
+    display: inline-block;
+}
