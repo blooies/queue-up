@@ -12,6 +12,7 @@ export default class CreateEventsAndBatches extends Component {
 
         this.state = {onCreateEvent: this.props.location.pathname == '/createEvent'};
         this.finishCreatingEvent = this.finishCreatingEvent.bind(this);
+        this.goBackToEdit = this.goBackToEdit.bind(this);
     }
 
     finishCreatingEvent(batches) {
@@ -33,6 +34,13 @@ export default class CreateEventsAndBatches extends Component {
         return this.props.location.pathname == '/createEvent';
     }
 
+    goBackToEdit() {
+        this.setState({
+            onCreateEvent: true
+        })
+        browserHistory.push('/createEvent');
+    }
+
     render() {
         return (
             <div>
@@ -41,7 +49,10 @@ export default class CreateEventsAndBatches extends Component {
                 </div>
 
                 <div style={{display: this.state.onCreateEvent ? 'none' : 'block'}}>
-                    <ListBatches batches={this.state.batches}/>
+                    <ListBatches 
+                        batches={this.state.batches}
+                        goBackToEdit={this.goBackToEdit}
+                    />
                 </div>
             </div>
         )
