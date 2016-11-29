@@ -194,7 +194,11 @@ button:hover {
 .overtime .icon {
     width: 20px;
     height: 20px;
-    border: 1px solid red;
+    background: url('images/error.png');
+    background-size: contain;
+    right: 0px;
+    display: inline-block;
+    margin-bottom: 5px;
 }
 
 .alert {
@@ -214,6 +218,10 @@ button:hover {
     position: absolute;
 }
 
+.batch-number {
+    margin-top: 9px;
+}
+
 .batch-details {
     right: 0px;
     span {
@@ -231,4 +239,13 @@ button:hover {
 
 .batch-btns {
     text-align: center;
+}
+
+.batch-details .details {
+    display: inline-block;
+    text-align: right;
+}
+
+.overtime .details {
+    margin-right: 10px;
 }
