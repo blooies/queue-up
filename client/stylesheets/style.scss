@@ -248,3 +248,13 @@ button:hover {
 .overtime .details {
     margin-right: 10px;
 }
+
+.event-card {
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 1em;
+    margin-bottom: 20px;
+    .card-tabs {
+        border: 1px solid #ccc;
+    }
+}

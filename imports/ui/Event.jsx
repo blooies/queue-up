@@ -10,12 +10,12 @@ export default class Event extends Component {
 
     render() {
         return (
-            <div className='event'>
+            <div className='event-card'>
                 <h3>{this.props.event.name}</h3>
                 <p>{this.props.event.date}</p>
                 <div className='card-tabs'>
-                    <div>batch</div>
-                    <div className='log-num' onClick={this.redirectToNumberSubmission}>log num</div>
+                    <div className='log-num' onClick={this.redirectToNumberSubmission}>Add attendees</div>
+                    <div>View details</div>
                 </div>
             </div>
         );
