@@ -67,7 +67,6 @@ export default class ListBatches extends Component {
     renderMessage() {
         if (this.props.batches) {
             var message = this.getAlert();
-            console.log("MESSAGE", message)
             var overtimeMessage = message.overtime;
             var endTimeMessage = message.endTime;
             return (
@@ -80,7 +79,6 @@ export default class ListBatches extends Component {
     }
 
     renderBatches() {
-        console.log("RENDER BATCHES", this.props, this)
         if (this.props.batches) {
             return this.props.batches.map((batch) => (
                  <Batch
