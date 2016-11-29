@@ -20,7 +20,7 @@ body {
 button {
     background: #111111;
     color: white !important;
-    padding: 1em 2em;
+    padding: .7em 2em;
     border: none;
     display: block;
     margin: 0 auto;
@@ -225,4 +225,10 @@ button:hover {
     color: #fff;
     background-color: #1AC495;
     display: inline-block;
+    width: 40%;
+    margin-right: 20px;
+}
+
+.batch-btns {
+    text-align: center;
 }
