@@ -26,8 +26,10 @@ export default class Batch extends Component {
             <div className='batch-container'>
                 <div className='batch-number'>{this.props.batch.name}</div>
                 <div className={this.getOvertimeClassName()}>
-                    <span>{this.formatTime(this.props.batch.startTime)} - {this.formatTime(this.props.batch.endTime)}</span>
-                    <span>{this.props.batch.totalAttendees} attendees</span>
+                    <div className='details'>
+                        <span>{this.formatTime(this.props.batch.startTime)} - {this.formatTime(this.props.batch.endTime)}</span>
+                        <span>{this.props.batch.totalAttendees} attendees</span>
+                    </div>
                     <div className='icon'></div>
                 </div>
             </div>
