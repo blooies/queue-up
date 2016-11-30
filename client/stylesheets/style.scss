@@ -250,18 +250,40 @@ button:hover {
 }
 
 .event-card {
+    width: 70%;
+    margin: 0 auto;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 7px;
     margin-bottom: 20px;
+    padding-top: .5em;
+    letter-spacing: 1px;
+    h3, p {
+        text-align: left;
+        margin-left: 30px;
+    }
+    h3 {
+        font-size: 14px;
+        font-weight: normal;
+    }
+    p {
+        font-size: 10px;
+        margin-top: -5px;
+        padding-bottom: 20px;
+    }
     .card-tabs {
+        font-size: 14px;
+        color: #1AC495;
         div {
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 0px 0px 5px 0px;
             width: 50%;
             display: inline-block;
             padding: 1em 0em;
             text-align: center;
+        }
+        .log-num {
+            border-radius: 0px 0px 0px 5px;
         }
     }
 }
