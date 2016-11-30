@@ -87,7 +87,7 @@ button:hover {
 
 .create-new-next,
 .at-form button {
-    margin-top: 20%;
+    margin-top: 10%;
     width: 100%;
     color: #fff;
     background-color: #1AC495;
@@ -250,11 +250,18 @@ button:hover {
 }
 
 .event-card {
+    text-align: center;
     border: 1px solid #ccc;
     border-radius: 7px;
-    padding: 1em;
     margin-bottom: 20px;
     .card-tabs {
-        border: 1px solid #ccc;
+        div {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 50%;
+            display: inline-block;
+            padding: 1em 0em;
+            text-align: center;
+        }
     }
 }
