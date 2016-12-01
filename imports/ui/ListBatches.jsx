@@ -12,22 +12,27 @@ export default class ListBatches extends Component {
         this.getBatches = this.getBatches.bind(this);
     }
     getBatches() {
-      console.log("get batches........")
         var eventInfo = this.props.eventInfo;
         var batches = BatchController.getBatches(eventInfo);
         this.batches = batches;
+    }
+    renderBatches() {
+      return this.batches.map((batch) => (
+           <Batch
+              key={batch.name}
+              batch={batch}
+          />
+      ))
     }
 
     render() {
       if (this.props.eventInfo) {
             this.getBatches();
-            console.log("BATCHES?", this.batches)
-            return this.batches.map((batch) => (
-                 <Batch
-                    key={batch.name}
-                    batch={batch}
-                />
-            ))
+            return (
+              <div>
+                {this.renderBatches()}
+              </div>
+            )
         }
     }
 }
