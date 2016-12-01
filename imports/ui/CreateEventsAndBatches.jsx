@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import CreateEvent from './CreateEvent.jsx';
-import ListBatches from './ListBatches.jsx';
+import EditBatches from './EditBatches.jsx';
 
 import { browserHistory } from 'react-router';
 
@@ -16,22 +16,16 @@ export default class CreateEventsAndBatches extends Component {
         this.goBackToEvents = this.goBackToEvents.bind(this);
     }
 
-    finishCreatingEvent(batches) {
-        console.log("FINISH CREATING EVENT")
-        this.state.batches = batches;
+    finishCreatingEvent(eventInfo) {
+        this.state.eventInfo = eventInfo;
         this.setState({
             onCreateEvent: false
         })
-        console.log("WHAT IS THIS props batches", this)
+        console.log("SET STATE", eventInfo)
         browserHistory.push('/batches');
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log("COMP WIL RECEIVE PROPS")
-    }
-
     onCreateEvent() {
-        console.log("ON CREATE EVENT")
         return this.props.location.pathname == '/createEvent';
     }
 
@@ -54,10 +48,8 @@ export default class CreateEventsAndBatches extends Component {
                 </div>
 
                 <div style={{display: this.state.onCreateEvent ? 'none' : 'block'}}>
-                    <ListBatches 
-                        batches={this.state.batches}
-                        goBackToEdit={this.goBackToEdit}
-                        goBackToEvents={this.goBackToEvents}
+                    <EditBatches
+                        eventInfo={this.state.eventInfo}
                     />
                 </div>
             </div>
