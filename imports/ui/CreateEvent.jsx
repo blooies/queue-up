@@ -73,10 +73,10 @@ export default class CreateEvent extends Component {
             Meteor.call('events.insert', eventInfo);
             // var path = '/batches';
             // browserHistory.push(path); 
-            window.test = eventInfo;
-            var batches = BatchController.getBatches(eventInfo);
+            // window.test = eventInfo;
+            // var batches = BatchController.getBatches(eventInfo);
 
-            this.props.onSubmit(batches);
+            this.props.onSubmit(eventInfo);
             // console.log(eventInfo)
             
         }
