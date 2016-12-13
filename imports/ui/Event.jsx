@@ -2,15 +2,28 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 
+import ListBatches from './ListBatches.jsx';
+
 export default class Event extends Component {
+    constructor(props) {
+        super(props);
+        this.viewDetails = this.viewDetails.bind(this);
+    }
+
     redirectToNumberSubmission() {
        const path = '/submitNumber';
        browserHistory.push(path); 
     }
 
     viewDetails() {
-        const path = '/' + this.props.event.key;
-        browserHistory.push(path);
+        var batches = BatchController.getBatches(this.props.event);
+        console.log('batches!!!', batches)
+        return (
+            <div>
+                <ListBatches batches={batches}
+                />
+            </div>
+        )
     }
 
     render() {
